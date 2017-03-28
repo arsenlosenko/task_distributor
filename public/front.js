@@ -1,6 +1,6 @@
        $(document).ready(function(){
         var user,pass;
-        $("#submit").click(function(){
+        $("#sign-in").click(function(){
           user=$("#emailInput").val();
           pass=$("#passwordInput").val();
           $.post("http://localhost:3000/login",{user: user,password: pass}, function(data){
