@@ -10,13 +10,6 @@ body {
 	background: #42A5F5;
 }
 
-input{
-	border: 2px solid #2196F3;
-	box-sizing: border-box;
-	border-radius: 10%;
-}
-
-
 .login {
 	width: 173px;
 	padding: 20px;
@@ -24,8 +17,25 @@ input{
 	top: 36%;
 	left: 43%;
 }
-
-.debug {
-	display: none;
+	
+.input-login {
+	font-size: 30px;
+	background: white;
+	border: 3px ridge white;
+	padding: 6px;
 }
+
+#emailInput {
+	border-top-right-radius: 8px;
+	border-top-left-radius: 8px;
+}
+
+#sing-in {
+	background: #1976D2;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+}
+
+
+
 

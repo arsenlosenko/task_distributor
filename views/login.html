@@ -12,25 +12,13 @@
 <body>
     <div class="login">
         <form method="POST">
-            <label>Login(email):</label>
-            <input type="email" name="emailInput" id="emailInput"><br>
-            <label>Password:</label>
-            <input type="password" name="passwordInput" id="passwordInput"><br>
-            <a class="debug" href="index.html">Click me</a><br>
-            <input type="submit" id="subimt" value="Sign in" onclick="changePage()"><br>
+            <input class="input-login" type="email" name="emailInput" id="emailInput" placeholder="Email"><br>
+            <input class="input-login" type="password" name="passwordInput" id="passwordInput" placeholder="Password"><br>
+            <!--<a class="debug" href="index.html">Click me</a><br>-->
+            <input class="input-login" type="submit" id="sign-in" value="Sign In" onclick="changePage()"><br>
         </form>
+        <span class="sing-up">Sing Up</span>
     </div>
-    <script>
-=======
-<body>  
-    <form method="POST">
-        <label>Login(email):</label>
-        <input type="email" name="emailInput" id="emailInput"><br>
-        <label>Password:</label>
-        <input type="password" name="passwordInput" id="passwordInput"><br>
-        <a href="index.html">Click me</a><br>
-        <input type="submit" id="subimt" value="Sign in" onclick="changePage()"><br>
-    </form>
     <script src="front.js"></script>
     <!--<script>
 >>>>>>> origin/master
