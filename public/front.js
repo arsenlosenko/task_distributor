@@ -12,6 +12,7 @@
         });
       });
  
+
  function createTask(){
     let taskName = document.getElementById('taskName');
     let taskDescription = document.getElementById('taskDescription');
@@ -31,11 +32,12 @@ function createEl(){
     container.appendChild(paragraph);
 }
 
-function changePage(){
-    window.location.href = "../views/index.html";
-    let email = document.getElementById('emailInput');
-    let pass = document.getElementById('passwordInput');
-    console.log('Login is ' + email.value + ' and password is ' + pass.value);
-    return false;
+//скрипт для тесту переходу на індекс
+// function changePage(){
+//     window.location.href = "../views/index.html";
+//     let email = document.getElementById('emailInput');
+//     let pass = document.getElementById('passwordInput');
+//     console.log('Login is ' + email.value + ' and password is ' + pass.value);
+//     return false;
 
-}
+// }
