@@ -18,7 +18,7 @@ function createEl(){
 }
 
 function changePage(){
-    window.location.href = "index.html";
+    window.location.href = "../views/index.html";
     let email = document.getElementById('emailInput');
     let pass = document.getElementById('passwordInput');
     console.log('Login is ' + email.value + ' and password is ' + pass.value);

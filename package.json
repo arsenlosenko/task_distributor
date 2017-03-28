@@ -11,7 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser":"*",
-    "ejs":"ejs",
+    "ejs":"*",
     "express":"*",
     "pg":"*"
   }
