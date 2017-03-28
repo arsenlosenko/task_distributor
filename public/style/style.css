@@ -11,11 +11,12 @@ body {
 }
 
 .login {
-	width: 173px;
+	text-align: center;
+	width: 300px;
 	padding: 20px;
 	position: absolute;
-	top: 36%;
-	left: 43%;
+	top: 30%;
+	left: 39%;
 }
 	
 .input-login {
@@ -23,6 +24,7 @@ body {
 	background: white;
 	border: 3px ridge white;
 	padding: 6px;
+	width: 100%;
 }
 
 #emailInput {
@@ -31,9 +33,17 @@ body {
 }
 
 #sing-in {
+	color: white;
+	width: 318px;
 	background: #1976D2;
 	border-bottom-right-radius: 8px;
 	border-bottom-left-radius: 8px;
+}
+
+.sing-up {
+	display: block;
+	margin-top: 7px;
+	font-size: 20px;
 }
 
 
