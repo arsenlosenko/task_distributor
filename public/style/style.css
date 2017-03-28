@@ -12,38 +12,47 @@ body {
 
 .login {
 	text-align: center;
-	width: 300px;
+	width: 400px;
 	padding: 20px;
 	position: absolute;
 	top: 30%;
-	left: 39%;
+	left: 35%;
 }
 	
 .input-login {
 	font-size: 30px;
+	border: none;
 	background: white;
-	border: 3px ridge white;
 	padding: 6px;
 	width: 100%;
 }
 
 #emailInput {
-	border-top-right-radius: 8px;
-	border-top-left-radius: 8px;
+	border-bottom: 5px solid #42A5F5;
+	border-top-right-radius: 12px;
+	border-top-left-radius: 12px;
+}
+
+.sing {
+	color: #42A5F5;
+	width: 412px;
+}
+
+.sing:hover {
+	color: white;
+	background: #42A5F5;
 }
 
 #sing-in {
-	color: white;
-	width: 318px;
-	background: #1976D2;
-	border-bottom-right-radius: 8px;
-	border-bottom-left-radius: 8px;
+	background: #0277BD;
+	border-bottom: 5px solid #42A5F5;
+	border-top: 5px solid #42A5F5;
 }
 
-.sing-up {
-	display: block;
-	margin-top: 7px;
-	font-size: 20px;
+#sing-up {
+	background: #0277BD;
+	border-bottom-left-radius: 12px;
+	border-bottom-right-radius: 12px;
 }
 
 
