@@ -24,6 +24,25 @@ app.get('/',function (req,res) {
     res.render('login.html');
 });
 
+app.post('/', function (req,res){
+    var login=req.body.email.value;/// ось не знаходить змінної email
+    var password=req.body.pass.value; /// і ось тут pass
+    /*pg.connect(config, function(err, client, done) {
+        if(err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query('insert into "users"(login,password,id_role_integer) values("'+login+', '+password+', '+3+');', function(err, result) {
+        if(err) {
+            return console.error('error running query', err);
+        }
+        //res.render('index.html', {user:result.rows});
+        res.send(result.rows);
+        //, {user:result.rows}
+        done();
+        });
+    });*/
+ });
+
 /*app.post('/index', function (req,res){
     var login=req.body.email.value;
     var password=req.body.pass.value;
@@ -43,21 +62,3 @@ app.get('/',function (req,res) {
      });
 });*/
 
-/*app.post('/', function (req,res){
-    //var login=req.body.email.value;
-    //var password=req.body.pass.value;
-    pg.connect(config, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query('insert into "users"(login,password,id_role_integer) values("'+login+', '+password+', '+3+');', function(err, result) {
-            if(err) {
-                return console.error('error running query', err);
-            }
-            //res.render('index.html', {user:result.rows});
-            res.send(result.rows);
-            //, {user:result.rows}
-            done();
-        });
-    });
-});*/
