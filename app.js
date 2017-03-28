@@ -5,7 +5,6 @@ var pg = require('pg');
 var path = require('path');
 var app = express();
 
-
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname,'public')));
 
@@ -18,7 +17,7 @@ var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
 
 app.listen(2000,function (req,res) {
     console.log("Server started on port 2000.");
-})
+});
 
 app.get('/',function (req,res) {
     res.render('login.html');
@@ -41,8 +40,14 @@ app.post('/', function (req,res){
         done();
         });
     });*/
- });
 
+ });
+app.get('/index', function (req,res) {
+    res.render('index.html');
+});
+app.get('/create',function (req,res) {
+    res.render('create.html');
+})
 /*app.post('/index', function (req,res){
     var login=req.body.email.value;
     var password=req.body.pass.value;
