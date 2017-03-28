@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <title>Create task</title>
+</head>
+<body>
+    <h1>Create Task:</h1>
+    <form action="">
+        <label for="nameOfTask">Name: </label><br>
+        <input type="text" name="nameOfTask" id="taskName"><br>
+        <label for="description">Summary: </label><br>
+        <textarea name="description" id="taskDescription" cols="30" rows="10"></textarea><br>
+        <label for="deadline">Deadline: </label><br>
+        <input type="date" name="deadline" id="taskDeadline"><br>
+        <label for="upload">Upload a file: </label><br>
+        <input type="file" name="upload"><br>
+        <br>
+        <input type="button" value="Create task" onclick="createTask()">  
+    </form>
+    <a href="index.html"><<< Back to index</a>
+    <script>
+        function createTask(){
+            let taskName = document.getElementById('taskName');
+            let taskDescription = document.getElementById('taskDescription');
+            let taskDeadline = document.getElementById('taskDeadline');
+            console.log('Task name is ' + taskName.value + ' description is ' + taskDescription.value + ' and its due to ' + taskDeadline.value);
+            return false;
+        }
+    </script>
+</body>
+</html>

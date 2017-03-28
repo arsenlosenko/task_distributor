@@ -1,0 +1,18 @@
+{
+  "name": "tests_distributor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "dyachuk.droid@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser":"*",
+    "ejs":"ejs",
+    "express":"*",
+    "pg":"*"
+  }
+}
