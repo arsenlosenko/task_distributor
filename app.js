@@ -6,7 +6,7 @@ var path = require('path');
 var app = express();
 
 app.set('views', __dirname + '/views');
-app.use(express.static(path.join(__dirname,'public')));
+app.use(express.static(path.join(__dirname)));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,13 +24,14 @@ app.get('/',function (req,res) {
 });
 
 app.post('/', function (req,res){
-    var login=req.body.email.value;/// ось не знаходить змінної email
-    var password=req.body.pass.value; /// і ось тут pass
-    /*pg.connect(config, function(err, client, done) {
+    var login=req.body.user;/// ось не знаходить змінної email
+    var password=req.body.password; /// і ось тут pass
+    console.log(login+" "+password);
+    pg.connect(config, function(err, client, done) {
         if(err) {
             return console.error('error fetching client from pool', err);
         }
-        client.query('insert into "users"(login,password,id_role_integer) values("'+login+', '+password+', '+3+');', function(err, result) {
+        client.query("select * from users where login=$1 and password=$2", [login, password], function(err, result) {
         if(err) {
             return console.error('error running query', err);
         }
@@ -38,9 +39,9 @@ app.post('/', function (req,res){
         res.send(result.rows);
         //, {user:result.rows}
         done();
-        });
-    });*/
 
+        });
+    });
  });
 app.get('/index', function (req,res) {
     res.render('index.html');
