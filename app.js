@@ -12,8 +12,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 
 var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
+var flag=true;
 
 app.listen(2000,function (req,res) {
     console.log("Server started on port 2000.");
@@ -23,9 +25,18 @@ app.get('/',function (req,res) {
     res.render('login.html');
 });
 
+app.post('/login',function (req,res) {
+    if(flag==true){
+        res.render('index.html');
+    }
+    else{
+        res.render('login.html');
+    }
+})
+
 app.post('/', function (req,res){
-    var login=req.body.user;/// ось не знаходить змінної email
-    var password=req.body.password; /// і ось тут pass
+    var login=req.body.user;
+    var password=req.body.password;
     console.log(login+" "+password);
     pg.connect(config, function(err, client, done) {
         if(err) {
@@ -35,11 +46,11 @@ app.post('/', function (req,res){
         if(err) {
             return console.error('error running query', err);
         }
-        //res.render('index.html', {user:result.rows});
-        res.send(result.rows);
+        res.render('index.html');
+        console.log("мало б index.html");
+        //res.send(result.rows);
         //, {user:result.rows}
         done();
-
         });
     });
  });

@@ -1,17 +1,18 @@
-       $(document).ready(function(){
-            var user,pass;
-           console.log("js loaded!");
-        $("#sign-in").click(function(){
-            user=$("#emailInput").val();
-            pass=$("#passwordInput").val();
-            $.post("http://localhost:2000/",{user: user,password: pass}, function(data){
+$(document).ready(function(){
+    var user,pass;
+
+    $("#sing-in").click(function(){
+        user=$("#emailInput").val();
+        pass=$("#passwordInput").val();
+        alert(user + " " + pass);
+        $.post('http://localhost:2000/', {user: user,password: pass}, function(data){
             if(data==='done')
-              {
+            {
                 alert("login success");
-              }
-          });
+            }
         });
-      });
+    });
+});
  
 
  function createTask(){
