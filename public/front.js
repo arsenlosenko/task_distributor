@@ -1,3 +1,17 @@
+       $(document).ready(function(){
+        var user,pass;
+        $("#submit").click(function(){
+          user=$("#emailInput").val();
+          pass=$("#passwordInput").val();
+          $.post("http://localhost:3000/login",{user: user,password: pass}, function(data){
+            if(data==='done')
+              {
+                alert("login success");
+              }
+          });
+        });
+      });
+ 
  function createTask(){
     let taskName = document.getElementById('taskName');
     let taskDescription = document.getElementById('taskDescription');
