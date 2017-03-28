@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style/style.css">
     <title>Login</title>
 </head>
+<<<<<<< HEAD
 <body>
     <div class="login">
         <form method="POST">
@@ -21,6 +22,19 @@
         </form>
     </div>
     <script>
+=======
+<body>  
+    <form method="POST">
+        <label>Login(email):</label>
+        <input type="email" name="emailInput" id="emailInput"><br>
+        <label>Password:</label>
+        <input type="password" name="passwordInput" id="passwordInput"><br>
+        <a href="index.html">Click me</a><br>
+        <input type="submit" id="subimt" value="Sign in" onclick="changePage()"><br>
+    </form>
+    <script src="front.js"></script>
+    <!--<script>
+>>>>>>> origin/master
         function changePage(){
             window.location.href = "index.html";
             let email = document.getElementById('emailInput');
@@ -28,6 +42,6 @@
             console.log('Login is ' + email.value + ' and password is ' + pass.value);
             return false;
         }
-    </script>
+    </script>-->
 </body>
 </html>
