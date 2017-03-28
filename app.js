@@ -17,18 +17,18 @@ app.listen(2000,function (req,res) {
 })
 
 app.get('/login',function (req,res) {
-    pg.connect(config, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query('select login from "user" inner join role on role.id="user".id_role where role.id=1', function(err, result) {
-            if(err) {
-                return console.error('error running query', err);
-            }
-            res.render('index.html');
-            //res.send(result.rows);
-            //, {user:result.rows}
-            done();
-        });
-    });
+    /* pg.connect(config, function(err, client, done) {
+     if(err) {
+     return console.error('error fetching client from pool', err);
+     }
+     client.query('select login from "user" inner join role on role.id="user".id_role where role.id=1', function(err, result) {
+     if(err) {
+     return console.error('error running query', err);
+     }*/
+    res.render('login.html');
+    //res.send(result.rows);
+    //, {user:result.rows}
+    //done();
+    /*});
+     });*/
 });
