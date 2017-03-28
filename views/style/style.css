@@ -1,0 +1,31 @@
+/*COLORS
+	ligt blue #E3F2FD
+	dark blue #0D47A1
+	blue #2196F3
+*/
+
+body {
+	color: white;
+	font-family: 'Roboto', sans-serif;
+	background: #42A5F5;
+}
+
+input{
+	border: 2px solid #2196F3;
+	box-sizing: border-box;
+	border-radius: 10%;
+}
+
+
+.login {
+	width: 173px;
+	padding: 20px;
+	position: absolute;
+	top: 36%;
+	left: 43%;
+}
+
+.debug {
+	display: none;
+}
+
