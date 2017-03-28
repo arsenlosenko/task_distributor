@@ -1,9 +1,10 @@
        $(document).ready(function(){
-        var user,pass;
+            var user,pass;
+           console.log("js loaded!");
         $("#sign-in").click(function(){
-          user=$("#emailInput").val();
-          pass=$("#passwordInput").val();
-          $.post("http://localhost:3000/login",{user: user,password: pass}, function(data){
+            user=$("#emailInput").val();
+            pass=$("#passwordInput").val();
+            $.post("http://localhost:2000/",{user: user,password: pass}, function(data){
             if(data==='done')
               {
                 alert("login success");
