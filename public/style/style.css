@@ -1,9 +1,3 @@
-/*COLORS
-	ligt blue #E3F2FD
-	dark blue #0D47A1
-	blue #2196F3
-*/
-
 body {
 	color: white;
 	font-family: 'Roboto', sans-serif;
@@ -19,7 +13,7 @@ body {
 	left: 35%;
 }
 	
-.input-login {
+.login input {
 	font-size: 30px;
 	border: none;
 	background: white;
@@ -27,32 +21,30 @@ body {
 	width: 100%;
 }
 
-#emailInput {
+#email-input {
 	border-bottom: 5px solid #42A5F5;
-	border-top-right-radius: 12px;
-	border-top-left-radius: 12px;
+	border-radius: 12px 12px 0 0;
 }
 
-.sing {
+.login .sign {
 	color: #42A5F5;
 	width: 412px;
 }
 
-.sing:hover {
+.sign:hover {
 	color: white;
 	background: #42A5F5;
 }
 
-#sing-in {
+#sign-in {
 	background: #0277BD;
 	border-bottom: 5px solid #42A5F5;
 	border-top: 5px solid #42A5F5;
 }
 
-#sing-up {
+#sign-up {
 	background: #0277BD;
-	border-bottom-left-radius: 12px;
-	border-bottom-right-radius: 12px;
+	border-radius: 0 0 12px 12px;
 }
 
 
