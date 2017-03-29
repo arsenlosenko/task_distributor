@@ -1,27 +1,31 @@
 $(document).ready(function(){
     var email,pass;
-
+    // Передача даних при логіні на сервер
     $("#sign-in").click(function(){
         email=$("#email-input").val();
         pass=$("#password-input").val();
         $.post('http://localhost:2000/', {email: email,pass: pass, button:1})
     });
+    // Передача даних при реєстрації
+
     $("#sign-up").click(function(){
         email=$("#email-input").val();
         pass=$("#password-input").val();
         $.post('http://localhost:2000/', {email: email,pass: pass, button:0})
     });
+
+    var task_name, task_description, task_deadline;
+    // Передача даних при створенні таску
+    $('#create_task').click(function(){
+      task_name = $('task-name').val();
+      task_description = $('#task-description').val();
+      task_deadline = $('task-deadline').val();
+      $.post('http://localhost:2000/create-task', {name: task_name, description: task_description, deadline: task_deadline})
+    });
+    
 });
 
-
- function createTask(){
-    var taskName = document.getElementById('task-name');
-    var taskDescription = document.getElementById('task-description');
-    var taskDeadline = document.getElementById('task-deadline');
-    console.log('Task name is ' + task-name.value + ' description is ' + task-description.value + ' and its due to ' + task-deadline.value);
-    return false;
-}
-
+// Хай поки шо буде тут
 function createEl(){
     var textNode = prompt('Add text: ');
     var container = document.getElementById('tasks');
@@ -32,13 +36,3 @@ function createEl(){
     anchor.appendChild(text);       
     container.appendChild(paragraph);
 }
-
-//скрипт для тесту переходу на індекс
-// function changePage(){
-//     window.location.href = "../views/index.html";
-//     var email = document.getElementById('emailInput');
-//     var pass = document.getElementById('passwordInput');
-//     console.log('Login is ' + email.value + ' and password is ' + pass.value);
-//     return false;
-
-// }

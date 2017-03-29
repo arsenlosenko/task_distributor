@@ -78,33 +78,7 @@ app.get('/index', function (req,res) {
     res.render('index.html');
 });
 app.get('/create.html',function (req,res) {
-    res.render('index.html');
-});
-
-app.post('/create.html',function (req,res) {
-    res.render('index.html');
-});
-
-app.gpost('/create-task', function (req,res) {
-    var name = req.body.name;
-    var summary = req.body.summary;
-    var deadline = req.body.deadline;
-    pg.connect(config, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query("insert into alfa_task(name,description,deadline) values($1,$2,$3)", [email, pass,3], function(err, result) {
-            if(err) {
-                return console.error('error running query', err);
-            }
-            client.query("select * from alfa_task where name=$1 and description=$2 and deadline=$3", [email, pass], function (err, result) {
-                res.render('index.html', {new_task: result.rows});
-            });
-
-            console.log(result.rows);
-            done();
-        });
-    });
+    res.render('create.html');
 });
 /*app.post('/index', function (req,res){
     var login=req.body.email.value;
