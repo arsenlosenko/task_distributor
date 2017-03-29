@@ -9,13 +9,13 @@
 </head>
 <body>
     <h1>Create Task:</h1>
-    <form action="">
-        <label for="nameOfTask">Name: </label><br>
-        <input type="text" name="nameOfTask" id="taskName"><br>
+    <form action="POST">
+        <label for="task-name">Name: </label><br>
+        <input type="text" name="task_name" id="task-name"><br>
         <label for="description">Summary: </label><br>
-        <textarea name="description" id="taskDescription" cols="30" rows="10"></textarea><br>
+        <textarea name="description" id="task-description" cols="30" rows="10"></textarea><br>
         <label for="deadline">Deadline: </label><br>
-        <input type="date" name="deadline" id="taskDeadline"><br>
+        <input type="date" name="deadline" id="task-deadline"><br>
         <label for="upload">Upload a file: </label><br>
         <input type="file" name="upload"><br>
         <br>

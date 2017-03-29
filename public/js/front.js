@@ -1,24 +1,24 @@
 $(document).ready(function(){
     var email,pass;
 
-    $("#sing-in").click(function(){
-        email=$("#emailInput").val();
-        pass=$("#passwordInput").val();
+    $("#sign-in").click(function(){
+        email=$("#email-input").val();
+        pass=$("#password-input").val();
         $.post('http://localhost:2000/', {email: email,pass: pass, button:1})
     });
-    $("#sing-up").click(function(){
-        email=$("#emailInput").val();
-        pass=$("#passwordInput").val();
+    $("#sign-up").click(function(){
+        email=$("#email-input").val();
+        pass=$("#password-input").val();
         $.post('http://localhost:2000/', {email: email,pass: pass, button:0})
     });
 });
 
 
  function createTask(){
-    var taskName = document.getElementById('taskName');
-    var taskDescription = document.getElementById('taskDescription');
-    var taskDeadline = document.getElementById('taskDeadline');
-    console.log('Task name is ' + taskName.value + ' description is ' + taskDescription.value + ' and its due to ' + taskDeadline.value);
+    var taskName = document.getElementById('task-name');
+    var taskDescription = document.getElementById('task-description');
+    var taskDeadline = document.getElementById('task-deadline');
+    console.log('Task name is ' + task-name.value + ' description is ' + task-description.value + ' and its due to ' + task-deadline.value);
     return false;
 }
 
