@@ -8,30 +8,27 @@
     <title>Create task</title>
 </head>
 <body>
+    <!--Форма для створення таску вручну-->
     <h1>Create Task:</h1>
-    <form action="POST">
+    <form action="POST" action="/create">
         <label for="task-name">Name: </label><br>
         <input type="text" name="task_name" id="task-name"><br>
         <label for="description">Summary: </label><br>
         <textarea name="description" id="task-description" cols="30" rows="10"></textarea><br>
         <label for="deadline">Deadline: </label><br>
         <input type="date" name="deadline" id="task-deadline"><br>
+        <br>
+        <input type="button" id="create_task" value="Create task">  
+    </form>
+    <!-- Форма для завантаження файлу таску окремо -->
+    <h2>Upload file with task: </h2>
+    <form enctype="multipart/form-data" action="upload">
         <label for="upload">Upload a file: </label><br>
         <input type="file" name="upload"><br>
-        <br>
-        <input type="button" value="Create task" onclick="createTask()">  
+        <input type="submit" value="Upload file">
     </form>
     <a href="index.html"><<< Back to index</a>
      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
     <script src="../public/js/front.js"></script>
-    <!--<script>
-        function createTask(){
-            let taskName = document.getElementById('taskName');
-            let taskDescription = document.getElementById('taskDescription');
-            let taskDeadline = document.getElementById('taskDeadline');
-            console.log('Task name is ' + taskName.value + ' description is ' + taskDescription.value + ' and its due to ' + taskDeadline.value);
-            return false;
-        }
-    </script>-->
 </body>
 </html>

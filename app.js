@@ -77,7 +77,7 @@ app.post('/', function (req,res){
 app.get('/index', function (req,res) {
     res.render('index.html');
 });
-app.get('/create',function (req,res) {
+app.get('/create.html',function (req,res) {
     res.render('create.html');
 });
 /*app.post('/index', function (req,res){
