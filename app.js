@@ -69,9 +69,7 @@ app.post('/', function (req,res){
     login_flag=req.body.button;
     //console.log(login_flag);
  });
-app.get('/index', function (req,res) {
-    res.render('index.html');
-});
+
 app.get('/create.html',function (req,res) {
     res.render('create.html');
 });
@@ -99,7 +97,19 @@ app.post('/create-task',function (req,res) {
 });
 
 app.get('/index',function (req,res) {
-    res.render('index.html');
+    pg.connect(config, function (err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query("select * from alfa_task", function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+            res.render('index.html', {tasks: result.rows});
+            console.log(result.rows);
+            done();
+        });
+    });
 });
 /*app.post('/create',function (req,res) {
     console.log("back2: "+task_name+" "+task_description+" "+task_deadline);
