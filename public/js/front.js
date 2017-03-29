@@ -17,9 +17,9 @@ $(document).ready(function(){
     var task_name, task_description, task_deadline;
     // Передача даних при створенні таску
     $('#create_task').click(function(){
-      task_name = $('task-name').val();
+      task_name = $('#task-name').val();
       task_description = $('#task-description').val();
-      task_deadline = $('task-deadline').val();
+      task_deadline = $('#task-deadline').val();
       $.post('http://localhost:2000/create-task', {name: task_name, description: task_description, deadline: task_deadline})
     });
     
