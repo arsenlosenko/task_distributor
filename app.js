@@ -85,9 +85,21 @@ app.post('/create-task',function (req,res) {
     task_description=req.body.description;
     task_deadline = req.body.deadline;
     console.log("back: "+task_name+" "+task_description+" "+task_deadline);
+    pg.connect(config, function (err, client, done) {
+        if (err) {
+            return console.error('error fetching client from pool', err);
+        }
+        client.query("insert into alfa_task(name,description,deadline) values($1,$2,$3)", [task_name, task_description, task_deadline], function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+            done();
+        });
+    });
 });
 
-app.post('/create',function (req,res) {
+//app.get('/index')
+/*app.post('/create',function (req,res) {
     console.log("back2: "+task_name+" "+task_description+" "+task_deadline);
     pg.connect(config, function (err, client, done) {
         if (err) {
@@ -100,28 +112,8 @@ app.post('/create',function (req,res) {
             client.query("select * from alfa_task where name=$1 and description=$2 and deadline=$3", [task_name, task_description, task_deadline], function (err, result) {
                 res.render('index.html', {new_task: result.rows});
             });
-
-            //console.log("хули")
             done();
         });
     });
-});
-/*app.post('/index', function (req,res){
-    var login=req.body.email.value;
-    var password=req.body.pass.value;
-    pg.connect(config, function(err, client, done) {
-        if(err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query('select * from "user" where login="'+login+'" and password="'+password+'";', function(err, result) {
-        if(err) {
-            return console.error('error running query', err);
-        }
-        //res.render('index.html', {user:result.rows});
-        res.send(result.rows);
-        //, {user:result.rows}
-        done();
-        });
-     });
 });*/
 
