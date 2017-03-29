@@ -4,10 +4,15 @@ $(document).ready(function(){
     $("#sing-in").click(function(){
         email=$("#emailInput").val();
         pass=$("#passwordInput").val();
-        $.post('http://localhost:2000/', {email: email,pass: pass})
+        $.post('http://localhost:2000/', {email: email,pass: pass, button:1})
+    });
+    $("#sing-up").click(function(){
+        email=$("#emailInput").val();
+        pass=$("#passwordInput").val();
+        $.post('http://localhost:2000/', {email: email,pass: pass, button:0})
     });
 });
- 
+
 
  function createTask(){
     var taskName = document.getElementById('taskName');
