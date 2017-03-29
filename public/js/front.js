@@ -1,16 +1,10 @@
 $(document).ready(function(){
-    var user,pass;
+    var email,pass;
 
     $("#sing-in").click(function(){
-        user=$("#emailInput").val();
+        email=$("#emailInput").val();
         pass=$("#passwordInput").val();
-        alert(user + " " + pass);
-        $.post('http://localhost:2000/', {user: user,password: pass}, function(data){
-            if(data==='done')
-            {
-                alert("login success");
-            }
-        });
+        $.post('http://localhost:2000/', {email: email,pass: pass})
     });
 });
  
