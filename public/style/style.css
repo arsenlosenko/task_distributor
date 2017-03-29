@@ -8,41 +8,79 @@ body {
 	padding: 0;
 }
 
+/*Стилі login.html*/
 
+*{	
+	box-sizing: border-box;
+}
 .login {
 	margin: auto;
 	text-align: center;
 	max-width: 400px;
 }
 	
-.login-input  {
+.input  {
 	background: white;
 	border: none;
-	box-sizing: border-box;
 	font-size: 30px;
 	margin: 5px;
 	padding: 6px;
 	width: 100%;
 }
 
-.login-input:first-child  {
+.border-top  {
 	border-radius: 12px 12px 0 0;
 }
 
-.sign {
-	background: #0277BD;
-	color: #42A5F5;
-	width: 100%;
+.border-bottom {
+	border-radius: 0 0 12px 12px;
 }
 
-.sign:hover {
+.button {
+	background: #0277BD;
+	color: #42A5F5;
+}
+
+.button:hover {
 	color: white;
 	cursor: pointer;
 }
 
-.sign-up {
-	border-radius: 0 0 12px 12px;
+/*Стилі кріейт.хтмл*/
+
+h1 {
+	margin: 5px 0 0 0;
 }
 
+.wrapper-create {
+	display: inline-block;
+	margin: 0 auto;
+	max-width: 800px;
+	text-align: center;
+}
 
+.wrapper-create .heand-job{
+	float: left;
+	margin: 5px 5px 0 0;
+	max-width: 555px;
+}
 
+.wrapper-create .file-job{
+	float: left;
+	margin-top: 5px;
+	max-width: 235px;
+}
+
+input[type="file"] {
+}
+
+@media (max-width: 800px) {
+	.wrapper-create .heand-job{
+		margin: 0 5px 0 0;
+		max-width: 800px;
+	}
+	.wrapper-create .file-job{
+		margin-top: 5px;
+		max-width: 800px;
+	}
+}
