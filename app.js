@@ -98,7 +98,9 @@ app.post('/create-task',function (req,res) {
     });
 });
 
-//app.get('/index')
+app.get('/index',function (req,res) {
+    res.render('index.html');
+});
 /*app.post('/create',function (req,res) {
     console.log("back2: "+task_name+" "+task_description+" "+task_deadline);
     pg.connect(config, function (err, client, done) {
