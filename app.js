@@ -26,6 +26,7 @@ app.get('/',function (req,res) {
 });
 
 app.post('/login',function (req,res) {
+
     if(login_flag==1) {
         pg.connect(config, function (err, client, done) {
             if (err) {
@@ -46,20 +47,25 @@ app.post('/login',function (req,res) {
         });
     }
     if(login_flag==0){
-        pg.connect(config, function(err, client, done) {
-            if(err) {
-                return console.error('error fetching client from pool', err);
-            }
-            client.query("insert into users(login,password,id_role) values($1,$2,$3)", [email, pass,3], function(err, result) {
-                if(err) {
-                    return console.error('error running query', err);
+        if(pass=="" || email==""){
+            res.render('login.html');
+        }
+        else {
+            pg.connect(config, function (err, client, done) {
+                if (err) {
+                    return console.error('error fetching client from pool', err);
                 }
-                client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
-                    res.render('index.html', {current_user: result.rows});
+                client.query("insert into users(login,password,id_role) values($1,$2,$3)", [email, pass, 3], function (err, result) {
+                    if (err) {
+                        return console.error('error running query', err);
+                    }
+                    client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
+                        res.render('index.html', {current_user: result.rows});
+                    });
+                    done();
                 });
-                done();
             });
-        });
+        }
     }
 });
 
