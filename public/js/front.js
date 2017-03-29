@@ -21,6 +21,7 @@ $(document).ready(function(){
       task_description = $('#task-description').val();
       task_deadline = $('#task-deadline').val();
       $.post('http://localhost:2000/create-task', {name: task_name, description: task_description, deadline: task_deadline})
+      window.location.href="http://localhost:2000/index";
     });
     
 });
