@@ -1,52 +1,47 @@
 body {
-	color: white;
-	font-family: 'Roboto', sans-serif;
 	background: #42A5F5;
+	color: white;
+	display: flex;
+	font-family: 'Roboto', sans-serif;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
 }
 
 .login {
+	margin: auto;
 	text-align: center;
-	width: 400px;
-	padding: 20px;
-	position: absolute;
-	top: 30%;
-	left: 35%;
+	width: 100%;
+	max-width: 400px;
 }
 	
-.login input {
-	font-size: 30px;
-	border: none;
+.login-input  {
 	background: white;
+	border: none;
+	box-sizing: border-box;
+	font-size: 30px;
+	margin: 5px;
 	padding: 6px;
 	width: 100%;
 }
 
-#email-input {
-	border-bottom: 5px solid #42A5F5;
+.login-input:first-child  {
 	border-radius: 12px 12px 0 0;
 }
 
-.login .sign {
+.sign {
+	background: #0277BD;
 	color: #42A5F5;
-	width: 412px;
+	width: 100%;
 }
 
 .sign:hover {
 	color: white;
-	background: #42A5F5;
 }
 
-#sign-in {
-	background: #0277BD;
-	border-bottom: 5px solid #42A5F5;
-	border-top: 5px solid #42A5F5;
-}
-
-#sign-up {
-	background: #0277BD;
+.sign-up {
 	border-radius: 0 0 12px 12px;
 }
-
 
 
 
