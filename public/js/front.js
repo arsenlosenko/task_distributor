@@ -27,9 +27,9 @@ $(document).ready(function(){
     // Прийом даних з серверу і вивід на сторінку у вигляді посилань
     $.ajax({url: 'data.json', success : function(result){
         for(i=0; i <= result.length; i++){
-            $('#tasks').append(
-                '<a href="#">' + i + ") "+ result[i].name + '</a></br>' +
-                '<p>' + result[i].description + '</p>'
+            $('#tasks').append("<h3>" + result[i].name + "</h3><br>" +
+                      "<p>" + Date.parse(result[i].deadline) + '</p>' +
+                      "<p>" + result[i].description + '</p>'
                 );
         }
     }});   
