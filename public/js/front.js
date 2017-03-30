@@ -24,7 +24,18 @@ $(document).ready(function(){
       window.location.href="http://localhost:2000/index";
     });
     
+    // Прийом даних з серверу і вивід на сторінку у вигляді посилань
+    $.ajax({url: 'data.json', success : function(result){
+        for(i=0; i <= result.length; i++){
+            $('#tasks').append(
+                '<a href="#">' + i + ") "+ result[i].name + '</a></br>' +
+                '<p>' + result[i].description + '</p>'
+                );
+        }
+    }});   
 });
+
+
 
 // Хай поки шо буде тут
 function createEl(){

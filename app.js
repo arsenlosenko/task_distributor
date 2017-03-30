@@ -3,8 +3,11 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var pg = require('pg');
 var path = require('path');
+//для передачі даних у файл
+var fs = require('fs')
 var app = express();
 var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
+// "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
 var email;
 var pass;
 var login_flag=undefined;
@@ -113,6 +116,16 @@ app.get('/index',function (req,res) {
             }
             res.render('index.html', {tasks: result.rows});
             console.log(result.rows);
+            // Перетворення результатів запиту на json
+            var parsedData = JSON.stringify(result.rows);
+            console.log(parsedData);
+            // Створення файлу з результатами запиту 
+            fs.writeFile('data.json', parsedData, function(){
+                if(err){
+                    return console.log(err);
+                }
+                    console.log('file saved');
+            });
             done();
         });
     });
