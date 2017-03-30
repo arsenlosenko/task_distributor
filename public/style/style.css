@@ -114,6 +114,7 @@ input[type="file"] {
 .header div {
 	position: fixed;
 	width: inherit;
+	height: inherit;
 	background: red;
 }
 
@@ -123,8 +124,15 @@ input[type="file"] {
 	background: green;
 }
 
-.profile {
+.profile{
 	float: left;
+	height: 300px;
 	width: 200px;
 	background: brown;
+}
+
+.profile div{
+	position: fixed;
+	width: inherit;
+	height: inherit;
 }
