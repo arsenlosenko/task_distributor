@@ -82,7 +82,6 @@ input[type="file"] {
 		margin: 5px 0 0 0;
 	}
 	.wrapper .heand-job{
-		margin: 0 5px 0 0;
 		max-width: 800px;
 	}
 	.wrapper .file-job{
@@ -107,7 +106,13 @@ input[type="file"] {
 	display: inline-block;
 }
 
-.header {
+.header{
+	height: 42px;
+	width: 800px;
+}
+
+.header div {
+	position: fixed;
 	width: inherit;
 	background: red;
 }
