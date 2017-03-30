@@ -88,7 +88,7 @@ app.post('/login',function (req,res) {
                     }
                     client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
                         res.render('index.html', {current_user: result.rows});
-                        console.log('User data: ')
+                        console.log('User data: ');
                         console.log(result);
                         var parseUser = JSON.stringify(result.rows);
                         console.log(parseUser);
@@ -118,9 +118,10 @@ app.get('/create.html',function (req,res) {
 });
 
 app.post('/create', upload.any(),  function (req,res) {
-    res.render('create.html');
-    //console.log("path motherfucker: "+req.files[0].path);
+
+    console.log("path motherfucker: "+req.files[0].path);
     file_path=req.files[0].path;
+    res.render('create.html');
 });
 
 app.post('/create-task',function (req,res) {
