@@ -15,17 +15,11 @@
             <form>
                 <input class="input border-top" type="text" name="task_name" id="task-name" placeholder="Title">
                 <textarea class="input" name="description" id="task-description" cols="30" rows="10" placeholder="Description"></textarea>
-                <label for="deadline">Deadline: </label>
+                <input class="input master" type="file" name="myfile">
+                <select class="input" name="user" id="user-select"></select>
                 <input class="input" type="date" name="deadline" id="task-deadline">
                 <input class="input button border-bottom" type="button" id="create_task" value="Create task">
             </form>
-        </div>
-        <div class="file-job">
-            <!-- Форма для завантаження файлу таску окремо -->
-            <form enctype="multipart/form-data" action="/create" method="post">
-                <input class="input border-top" type="file" name="myfile">
-                <input class="input button border-bottom" type="submit" value="Upload file">
-            </form>    
         </div>
     </div>
     
