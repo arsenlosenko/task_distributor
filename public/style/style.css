@@ -1,3 +1,12 @@
+/*--------------------Загальні---------------*/
+*{	
+	box-sizing: border-box;
+}
+
+h1{
+	margin: 5px 0 0 0;
+}
+
 body{
 	background: #42A5F5;
 	color: white;
@@ -8,17 +17,6 @@ body{
 	padding: 0;
 }
 
-/*Стилі login.html*/
-
-*{	
-	box-sizing: border-box;
-}
-.login{
-	margin: auto;
-	text-align: center;
-	max-width: 400px;
-}
-	
 .input{
 	background: white;
 	border: none;
@@ -47,10 +45,22 @@ body{
 }
 
 
+/*-----------------login.html----------------*/
+
+
+.login{
+	margin: auto;
+	text-align: center;
+	max-width: 400px;
+}
+
+
 /*Стилі кріейт.хтмл*/
 
-h1{
-	margin: 5px 0 0 0;
+
+textarea{
+	height: 250px;
+	resize: none;
 }
 
 .wrapper{
@@ -63,34 +73,10 @@ h1{
 .wrapper .heand-job{
 	float: left;
 	margin: 5px 5px 0 0;
-	max-width: 555px;
-}
-
-.wrapper .file-job{
-	float: left;
-	margin-top: 5px;
-	max-width: 235px;
 }
 
 input[type="file"]{
 	cursor: pointer;
-}
-
-@media (max-width: 800px){
-
-	.wrapper .heand-job, .input{
-		margin: 5px 0 0 0;
-	}
-	.wrapper .heand-job{
-		max-width: 800px;
-	}
-	.wrapper .file-job{
-		margin-top: 5px;
-		max-width: 800px;
-	}
-	.wrapper{
-		max-width: 800px;
-	}
 }
 
 /*------------------Індекс-------------------*/
@@ -111,13 +97,16 @@ input[type="file"]{
 .header{
 	height: 42px;
 	width: 800px;
+	margin: 0 0 5px 0;
 }
 
-.header div{
+.header-fix{
+	border-radius: 12px;
+	color: #42A5F5;
+	background: white;
 	position: fixed;
 	width: inherit;
 	height: inherit;
-	background: red;
 }
 
 
@@ -127,13 +116,15 @@ input[type="file"]{
 .content{
 	float: left;
 	width: 600px;
-	background: green;
+	background: white;
+	border-radius: 12px;
 }
 
 .task{
 	margin: 5px;
 	padding: 5px 0;
-	background: red;
+	border-radius: 12px;
+	background: #42A5F5;
 }
 
 .task p{
@@ -177,4 +168,25 @@ input[type="file"]{
 	max-width: 100px;
 	max-height: 100px;
 	border-radius: 50%;
+}
+
+
+/*--------------Медіазапити-------------*/
+
+
+@media (max-width: 800px){
+
+	.wrapper .heand-job, .input{
+		margin: 5px 0 0 0;
+	}
+	.wrapper .heand-job{
+		max-width: 800px;
+	}
+	.wrapper .file-job{
+		margin-top: 5px;
+		max-width: 800px;
+	}
+	.wrapper{
+		max-width: 800px;
+	}
 }
