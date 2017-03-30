@@ -102,6 +102,24 @@ app.post('/create-task',function (req,res) {
             }
             done();
         });
+        client.query("select * from alfa_task", function (err, result) {
+            if (err) {
+                return console.error('error running query', err);
+            }
+            //res.render('index.html', {tasks: result.rows});
+            //console.log(result.rows);
+            // Перетворення результатів запиту на json
+            var parsedData = JSON.stringify(result.rows);
+            console.log(parsedData);
+            // Створення файлу з результатами запиту
+            fs.writeFile('data.json', parsedData, function(){
+                if(err){
+                    return console.log(err);
+                }
+                console.log('file saved');
+            });
+            done();
+        });
     });
 });
 
