@@ -118,45 +118,86 @@ app.get('/create.html',function (req,res) {
 });
 
 app.post('/create', upload.any(),  function (req,res) {
-
-    console.log("path motherfucker: "+req.files[0].path);
     file_path=req.files[0].path;
     res.render('create.html');
 });
+
+var current_user_id;
 
 app.post('/create-task',function (req,res) {
     task_name=req.body.name;
     task_description=req.body.description;
     task_deadline = req.body.deadline;
-    console.log("back: "+task_name+" "+task_description+" "+task_deadline);
-    console.log(file_path);
     pg.connect(config, function (err, client, done) {
         if (err) {
             return console.error('error fetching client from pool', err);
         }
-        client.query("insert into alfa_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
+        client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
             if (err) {
                 return console.error('error running query', err);
             }
-            done();
-        });
-        client.query("select * from alfa_task", function (err, result) {
-            if (err) {
-                return console.error('error running query', err);
-            }
-            // Перетворення результатів запиту на json
-            var parsedData = JSON.stringify(result.rows);
-            console.log(parsedData);
-            // Створення файлу з результатами запиту
-            fs.writeFile('data.json', parsedData, function(){
-                if(err){
-                    return console.log(err);
-                }
-                console.log('file saved');
-            });
-            done();
-        });
+            current_user_id = result.rows[0].id_role;
+        })
     });
+
+        pg.connect(config, function (err, client, done) {
+            if (err) {
+                return console.error('error fetching client from pool', err);
+            }
+            client.query("insert into alfa_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                done();
+            });
+            client.query("select * from alfa_task", function (err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                // Перетворення результатів запиту на json
+                var parsedData = JSON.stringify(result.rows);
+                console.log(parsedData);
+                // Створення файлу з результатами запиту
+                fs.writeFile('data.json', parsedData, function () {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log('file saved');
+                    console.log("все ок!");
+                });
+                done();
+            });
+        });
+
+    if(current_user_id==2){
+        /*pg.connect(config, function (err, client, done) {
+            if (err) {
+                return console.error('error fetching client from pool', err);
+            }
+            client.query("insert into beta_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                done();
+            });
+            client.query("select * from alfa_task", function (err, result) {
+                if (err) {
+                    return console.error('error running query', err);
+                }
+                // Перетворення результатів запиту на json
+                var parsedData = JSON.stringify(result.rows);
+                console.log(parsedData);
+                // Створення файлу з результатами запиту
+                fs.writeFile('data.json', parsedData, function () {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log('file saved');
+                });
+                done();
+            });
+        });*/
+    }
 });
 
 app.get('/index',function (req,res) {
@@ -184,21 +225,3 @@ app.get('/index',function (req,res) {
         });
     });
 });
-/*app.post('/create',function (req,res) {
-    console.log("back2: "+task_name+" "+task_description+" "+task_deadline);
-    pg.connect(config, function (err, client, done) {
-        if (err) {
-            return console.error('error fetching client from pool', err);
-        }
-        client.query("insert into alfa_task(name,description,deadline) values($1,$2,$3)", [task_name, task_description, task_deadline], function (err, result) {
-            if (err) {
-                return console.error('error running query', err);
-            }
-            client.query("select * from alfa_task where name=$1 and description=$2 and deadline=$3", [task_name, task_description, task_deadline], function (err, result) {
-                res.render('index.html', {new_task: result.rows});
-            });
-            done();
-        });
-    });
-});*/
-
