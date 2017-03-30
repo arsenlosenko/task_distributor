@@ -16,8 +16,8 @@ var upload = multer( { storage: storage } );
 //для передачі даних у файл
 var fs = require('fs');
 var app = express();
-var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
-//var config = "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
+// var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
+var config = "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
 var email;
 var pass;
 var login_flag=undefined;

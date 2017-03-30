@@ -31,33 +31,35 @@ $(document).ready(function(){
                 //Елементи, що додаються на головній сторінці
                         "<div class='task'>" +
                             "<h3>" + result[i].name + "</h3>" +
-                            "<p>" + Date.parse(result[i].deadline) + '</p>' +
+                            "<p>" + result[i].deadline + '</p>' +
                             "<p>" + result[i].description + '</p>' +
-                        "</div>" + 
-                        "<div>"  +
+                            "</div>" + 
+                            "<div>"  +
                             "<a href='create.html' class='teamlead'>Create task</a>" + 
                         "</div>"
             );
         }
     }});
 
-    $('.task').click(function(){
-        $('p').css('display', 'block');
-    });
-    
+
     // Передача даних про користувача після авторизації або реєстрації
       $.ajax({url: 'user.json', success : function(result){
-          $('#user-data').append('<span>' + result[0].login + '</span>');
+          $('.profile-name').html(result[0].login);
         //   Відображення посилання на створення таску тімліду
-          if (result[0].id_role != 2){
-            $('.teamlead').css('display', 'none');
+          if (result[0].id_role != 1){
+            $('#task-link').css('display', 'none');
           }
 
-        // Відключення посилань на форму створення таску для працівників
-        if(result[0].id_role > 2){
-              $('.button-header').css('display', 'none');
+          if(result[0].id_role != 2){
+              $('.teamlead').css('display', 'none');
           }
+        // Відключення посилань на форму створення таску для працівників
       }});
 
+      $('#task-link').click(function(){
+          window.location.href = "create.html";
+      });
+
     // Анімація на головній сторінці
+
 });
