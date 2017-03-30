@@ -28,35 +28,36 @@ $(document).ready(function(){
     $.ajax({url: 'data.json', success : function(result){
         for(i=0; i <= result.length; i++){
             $('.content').append(
-                "<span class='task-head'>" + result[0].name + "</span>" +
-                        "<div class='task-info'>" +
-                            "<h3>" + result[i].name + "</h3><br>" +
+                //Елементи, що додаються на головній сторінці
+                        "<div class='task'>" +
+                            "<h3>" + result[i].name + "</h3>" +
                             "<p>" + Date.parse(result[i].deadline) + '</p>' +
                             "<p>" + result[i].description + '</p>' +
+                        "</div>" + 
+                        "<div>"  +
+                            "<a href='create.html' class='teamlead'>Create task</a>" + 
                         "</div>"
             );
         }
     }});
+
+    $('.task').click(function(){
+        $('p').css('display', 'block');
+    });
+    
     // Передача даних про користувача після авторизації або реєстрації
       $.ajax({url: 'user.json', success : function(result){
           $('#user-data').append('<span>' + result[0].login + '</span>');
+        //   Відображення посилання на створення таску тімліду
+          if (result[0].id_role != 2){
+            $('.teamlead').css('display', 'none');
+          }
 
+        // Відключення посилань на форму створення таску для працівників
+        if(result[0].id_role > 2){
+              $('.button-header').css('display', 'none');
+          }
       }});
 
     // Анімація на головній сторінці
-
 });
-
-
-
-// Хай поки шо буде тут
-function createEl(){
-    var textNode = prompt('Add text: ');
-    var container = document.getElementById('tasks');
-    var paragraph = document.createElement('p');
-    var anchor = document.createElement('a');
-    var text = document.createTextNode(textNode);
-    paragraph.appendChild(anchor);
-    anchor.appendChild(text);       
-    container.appendChild(paragraph);
-}

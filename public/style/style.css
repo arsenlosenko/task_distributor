@@ -140,9 +140,6 @@ input[type="file"]{
 	display: none; 
 }
 
-.task:hover p{
-	display:block;
-}
 
 .task-header{
 	display: inline-block;
