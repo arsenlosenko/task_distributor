@@ -10,9 +10,11 @@
   "author": "dyachuk.droid@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "body-parser":"*",
-    "ejs":"*",
-    "express":"*",
-    "pg":"*"
+    "body-parser": "*",
+    "ejs": "*",
+    "express": "*",
+    "express-fileupload": "^0.1.2",
+    "multer": "^1.3.0",
+    "pg": "*"
   }
 }

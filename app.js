@@ -3,15 +3,29 @@ var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var pg = require('pg');
 var path = require('path');
+var multer  = require('multer');
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/');
+    },
+    filename: function (req, file, cb) {
+        cb(null,  file.originalname );
+    }
+});
+var upload = multer( { storage: storage } );
+
 //для передачі даних у файл
-var fs = require('fs')
+var fs = require('fs');
 var app = express();
 // var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
 var config = "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
 var email;
 var pass;
 var login_flag=undefined;
-
+var task_name;
+var task_description;
+var task_deadline;
+var file_path;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
@@ -97,27 +111,29 @@ app.post('/', function (req,res){
     email=req.body.email;
     pass=req.body.pass;
     login_flag=req.body.button;
-    //console.log(login_flag);
  });
 
 app.get('/create.html',function (req,res) {
     res.render('create.html');
 });
 
-var task_name;
-var task_description;
-var task_deadline;
+app.post('/create', upload.any(),  function (req,res) {
+    res.render('create.html');
+    //console.log("path motherfucker: "+req.files[0].path);
+    file_path=req.files[0].path;
+});
 
 app.post('/create-task',function (req,res) {
     task_name=req.body.name;
     task_description=req.body.description;
     task_deadline = req.body.deadline;
     console.log("back: "+task_name+" "+task_description+" "+task_deadline);
+    console.log(file_path);
     pg.connect(config, function (err, client, done) {
         if (err) {
             return console.error('error fetching client from pool', err);
         }
-        client.query("insert into alfa_task(name,description,deadline) values($1,$2,$3)", [task_name, task_description, task_deadline], function (err, result) {
+        client.query("insert into alfa_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
             if (err) {
                 return console.error('error running query', err);
             }
@@ -127,8 +143,6 @@ app.post('/create-task',function (req,res) {
             if (err) {
                 return console.error('error running query', err);
             }
-            //res.render('index.html', {tasks: result.rows});
-            //console.log(result.rows);
             // Перетворення результатів запиту на json
             var parsedData = JSON.stringify(result.rows);
             console.log(parsedData);
