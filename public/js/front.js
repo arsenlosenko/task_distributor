@@ -27,12 +27,24 @@ $(document).ready(function(){
     // Прийом даних з серверу і вивід на сторінку у вигляді посилань
     $.ajax({url: 'data.json', success : function(result){
         for(i=0; i <= result.length; i++){
-            $('#tasks').append("<h3>" + result[i].name + "</h3><br>" +
-                      "<p>" + Date.parse(result[i].deadline) + '</p>' +
-                      "<p>" + result[i].description + '</p>'
-                );
+            $('.content').append(
+                "<span class='task-head'>" + result[0].name + "</span>" +
+                        "<div class='task-info'>" +
+                            "<h3>" + result[i].name + "</h3><br>" +
+                            "<p>" + Date.parse(result[i].deadline) + '</p>' +
+                            "<p>" + result[i].description + '</p>' +
+                        "</div>"
+            );
         }
-    }});   
+    }});
+    // Передача даних про користувача після авторизації або реєстрації
+      $.ajax({url: 'user.json', success : function(result){
+          $('#user-data').append('<span>' + result[0].login + '</span>');
+
+      }});
+
+    // Анімація на головній сторінці
+
 });
 
 
