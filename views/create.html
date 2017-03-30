@@ -12,7 +12,7 @@
         <h1>Create Task</h1>
         <div class="heand-job">
             <!--Форма для створення таску вручну-->
-            <form action="POST" action="/create">
+            <form>
                 <input class="input border-top" type="text" name="task_name" id="task-name" placeholder="Title">
                 <textarea class="input" name="description" id="task-description" cols="30" rows="10" placeholder="Description"></textarea>
                 <label for="deadline">Deadline: </label>
@@ -22,8 +22,8 @@
         </div>
         <div class="file-job">
             <!-- Форма для завантаження файлу таску окремо -->
-            <form enctype="multipart/form-data" action="upload">
-                <input class="input border-top" type="file" name="upload">
+            <form enctype="multipart/form-data" action="/create" method="post">
+                <input class="input border-top" type="file" name="simpleFile">
                 <input class="input button border-bottom" type="submit" value="Upload file">
             </form>    
         </div>
