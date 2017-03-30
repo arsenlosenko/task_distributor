@@ -17,8 +17,8 @@ var upload = multer( { storage: storage } );
 //для передачі даних у файл
 var fs = require('fs');
 var app = express();
-// var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
-var config = "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
+var config = "postgres://dron:1111@127.0.0.1:5432/tasks_distributor_db";
+//var config = "postgres://arsen:1111@127.0.0.1:5432/task_distributor";
 var email;
 var pass;
 var login_flag=undefined;
@@ -63,9 +63,9 @@ app.post('/login',function (req,res) {
                     var parseUser = JSON.stringify(result.rows);
                     console.log(parseUser);
                     fs.writeFile('user.json', parseUser, function(){
-                       if (err){
-                           return console.log(err);
-                       } 
+                        if (err){
+                            return console.log(err);
+                        }
                         console.log('user data saved');
                     })
                 }
@@ -88,16 +88,16 @@ app.post('/login',function (req,res) {
                     }
                     client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
                         res.render('index.html', {current_user: result.rows});
-                           console.log('User data: ')
-                           console.log(result);
-                           var parseUser = JSON.stringify(result.rows);
-                           console.log(parseUser);
-                           fs.writeFile('user.json', parseUser, function(){
-                               if(err){
-                                   return console.log(err);
-                               }
-                               console.log('User data saved');
-                           })
+                        console.log('User data: ')
+                        console.log(result);
+                        var parseUser = JSON.stringify(result.rows);
+                        console.log(parseUser);
+                        fs.writeFile('user.json', parseUser, function(){
+                            if(err){
+                                return console.log(err);
+                            }
+                            console.log('User data saved');
+                        })
 
                     });
                     done();
