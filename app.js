@@ -13,7 +13,6 @@ var storage = multer.diskStorage({
     }
 });
 var upload = multer( { storage: storage } );
-
 //для передачі даних у файл
 var fs = require('fs');
 var app = express();
@@ -26,6 +25,7 @@ var task_name;
 var task_description;
 var task_deadline;
 var file_path;
+var current_user_id;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.set('views', __dirname + '/views');
@@ -43,7 +43,6 @@ app.get('/',function (req,res) {
 });
 
 app.post('/login',function (req,res) {
-
     if(login_flag==1) {
         pg.connect(config, function (err, client, done) {
             if (err) {
@@ -58,8 +57,8 @@ app.post('/login',function (req,res) {
                 }
                 else {
                     res.render('index.html', {current_user: result.rows});
-                    console.log('User data: ');
-                    console.log(result.rows);
+                    //console.log('User data: ');
+                    //console.log(result.rows);
                     var parseUser = JSON.stringify(result.rows);
                     console.log(parseUser);
                     fs.writeFile('user.json', parseUser, function(){
@@ -88,8 +87,8 @@ app.post('/login',function (req,res) {
                     }
                     client.query("select * from users where login=$1 and password=$2", [email, pass], function (err, result) {
                         res.render('index.html', {current_user: result.rows});
-                        console.log('User data: ');
-                        console.log(result);
+                        //console.log('User data: ');
+                        //console.log(result);
                         var parseUser = JSON.stringify(result.rows);
                         console.log(parseUser);
                         fs.writeFile('user.json', parseUser, function(){
@@ -122,8 +121,6 @@ app.post('/create', upload.any(),  function (req,res) {
     res.render('create.html');
 });
 
-var current_user_id;
-
 app.post('/create-task',function (req,res) {
     task_name=req.body.name;
     task_description=req.body.description;
@@ -137,39 +134,33 @@ app.post('/create-task',function (req,res) {
                 return console.error('error running query', err);
             }
             current_user_id = result.rows[0].id_role;
-        })
-    });
-
-        pg.connect(config, function (err, client, done) {
-            if (err) {
-                return console.error('error fetching client from pool', err);
-            }
-            client.query("insert into alfa_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                done();
-            });
-            client.query("select * from alfa_task", function (err, result) {
-                if (err) {
-                    return console.error('error running query', err);
-                }
-                // Перетворення результатів запиту на json
-                var parsedData = JSON.stringify(result.rows);
-                console.log(parsedData);
-                // Створення файлу з результатами запиту
-                fs.writeFile('data.json', parsedData, function () {
+            if(current_user_id==1) {
+                client.query("insert into alfa_task(name,description,deadline,file_url) values($1,$2,$3,$4)", [task_name, task_description, task_deadline, file_path], function (err, result) {
                     if (err) {
-                        return console.log(err);
+                        return console.error('error running query', err);
                     }
-                    console.log('file saved');
-                    console.log("все ок!");
+                    done();
                 });
-                done();
-            });
+                client.query("select * from alfa_task", function (err, result) {
+                    if (err) {
+                        return console.error('error running query', err);
+                    }
+                    // Перетворення результатів запиту на json
+                    var parsedData = JSON.stringify(result.rows);
+                    //console.log(parsedData);
+                    // Створення файлу з результатами запиту
+                    fs.writeFile('data.json', parsedData, function () {
+                        if (err) {
+                            return console.log(err);
+                        }
+                        console.log('file saved');
+                        console.log("все ок!");
+                    });
+                    done();
+                });
+            }
         });
 
-    if(current_user_id==2){
         /*pg.connect(config, function (err, client, done) {
             if (err) {
                 return console.error('error fetching client from pool', err);
@@ -197,7 +188,7 @@ app.post('/create-task',function (req,res) {
                 done();
             });
         });*/
-    }
+    })
 });
 
 app.get('/index',function (req,res) {
